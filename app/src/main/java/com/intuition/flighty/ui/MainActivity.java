@@ -2,14 +2,58 @@ package com.intuition.flighty.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.intuition.flighty.R;
+import com.intuition.flighty.models.FeedItem;
+import com.intuition.flighty.models.FlightyFeed;
+import com.intuition.flighty.rest.RSSApi;
+
+import java.util.List;
+
+import retrofit2.Call;
+import okhttp3.OkHttpClient;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        OkHttpClient client = new OkHttpClient.Builder().build();
+
+        SimpleXmlConverterFactory conv = SimpleXmlConverterFactory.createNonStrict();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://www.secretflying.com/")
+                .client(client)
+                .addConverterFactory(conv)
+                .build();
+
+
+        RSSApi retrofitService = retrofit.create(RSSApi.class);
+        Call<FlightyFeed> call = retrofitService.getFeedItems();
+        call.enqueue(new Callback<FlightyFeed>() {
+
+            @Override
+            public void onResponse(Call<FlightyFeed> call, Response<FlightyFeed> response) {
+                Log.v("RESPONSE", "HI");
+                if(response.isSuccessful()){
+                    response.body().toString();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FlightyFeed> call, Throwable t) {
+                Log.v("ONFAIL", "FAIL");
+            }
+        });
+
     }
 }
