@@ -4,6 +4,7 @@ import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -11,18 +12,18 @@ import java.util.List;
 public class FlightyChannel implements Serializable {
 
     @ElementList(entry = "item", inline = true)
-    private List<FeedItem> feedItems;
+    private ArrayList<FeedItem> feedItems;
 
 
-    public FlightyChannel (List<FeedItem> feedItems) {
+    public FlightyChannel (ArrayList<FeedItem> feedItems) {
         this.feedItems = feedItems;
     }
 
-    public List<FeedItem> getFeedItems() {
+    public ArrayList<FeedItem> getFeedItems() {
         return feedItems;
     }
 
-    public void setFeedItems(List<FeedItem> feedItems) {
+    public void setFeedItems(ArrayList<FeedItem> feedItems) {
         this.feedItems = feedItems;
     }
 

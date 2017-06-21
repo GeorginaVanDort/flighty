@@ -13,8 +13,6 @@ public class FlightyFeed  implements Serializable {
     private FlightyChannel channel;
 
 
-
-
     public FlightyChannel getChannel() {
         return channel;
     }

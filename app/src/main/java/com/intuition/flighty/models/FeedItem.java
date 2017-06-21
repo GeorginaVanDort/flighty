@@ -19,14 +19,14 @@ public class FeedItem {
     @Element
     private String link;
 
-    @Path("comments")
+    @Path("description")
     @Text(required=false)
-    public String comments = "";
+    public String description = "";
 
     public FeedItem(String title, String link, String comments) {
         this.title = title;
         this.link = link;
-        this.comments = comments;
+        this.description = comments;
     }
 
     public String getTitle() {
@@ -48,10 +48,10 @@ public class FeedItem {
     public FeedItem () {}
 
     public String getComments() {
-        return comments;
+        return description;
     }
 
     public void setComments(String comments) {
-        this.comments = comments;
+        this.description = comments;
     }
 }
