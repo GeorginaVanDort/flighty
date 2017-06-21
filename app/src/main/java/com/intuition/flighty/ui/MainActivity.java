@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     final ArrayList<FeedItem> mItems = response.body().getChannel().getFeedItems();
 
+
                     MainActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -74,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
                     });
 
 
+//                    Document doc = Jsoup.parse(mItems);
 
-//                    Document doc = Jsoup.parse(mItems.get(0).getComments());
 //                    String text = doc.body().text();
 //                    Log.v("OVER HERE", text);
                 }

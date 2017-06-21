@@ -1,6 +1,8 @@
 package com.intuition.flighty.models;
 
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Path;
@@ -30,7 +32,9 @@ public class FeedItem {
     }
 
     public String getTitle() {
-        return title;
+
+        Document doc = Jsoup.parse(title);
+        return doc.body().text();
     }
 
     public void setTitle(String title) {
@@ -38,7 +42,8 @@ public class FeedItem {
     }
 
     public String getLink() {
-        return link;
+        Document doc = Jsoup.parse(link);
+        return doc.body().text();
     }
 
     public void setLink(String link) {
@@ -48,7 +53,8 @@ public class FeedItem {
     public FeedItem () {}
 
     public String getComments() {
-        return description;
+        Document doc = Jsoup.parse(description);
+        return doc.body().text();
     }
 
     public void setComments(String comments) {

@@ -45,12 +45,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         @BindView(R.id.feedTitle) TextView mFeedTitle;
         @BindView(R.id.feedDescription) TextView mFeedDescription;
         @BindView(R.id.feedLink) TextView mFeedLink;
-        private Context mContext;
+
 
         public FeedViewHolder(View v) {
             super(v);
             ButterKnife.bind(this, v);
-            mContext = v.getContext();
+
         }
         public void bindViewHolder(FeedItem feedItem) {
             mFeedDescription.setText(feedItem.getComments());
