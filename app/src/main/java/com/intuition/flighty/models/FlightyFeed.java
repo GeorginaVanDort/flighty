@@ -7,12 +7,13 @@ import org.simpleframework.xml.Root;
 import java.io.Serializable;
 
 @Root(name = "rss", strict = false)
-
 public class FlightyFeed  implements Serializable {
 
     @Element
-    private
-    FlightyChannel channel;
+    private FlightyChannel channel;
+
+
+
 
     public FlightyChannel getChannel() {
         return channel;

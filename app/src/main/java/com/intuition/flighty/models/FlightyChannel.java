@@ -10,19 +10,20 @@ import java.util.List;
 @Root(strict = false)
 public class FlightyChannel implements Serializable {
 
-    @ElementList(name = "item",required = true, inline = true)
-    private List<FeedItem> itemList;
+    @ElementList(entry = "item", inline = true)
+    private List<FeedItem> feedItems;
 
-    public List<FeedItem> getItemList() {
-        return itemList;
-    }
-
-    public void setItemList(List<FeedItem> itemList) {
-        this.itemList = itemList;
-    }
 
     public FlightyChannel (List<FeedItem> feedItems) {
-        this.itemList = feedItems;
+        this.feedItems = feedItems;
+    }
+
+    public List<FeedItem> getFeedItems() {
+        return feedItems;
+    }
+
+    public void setFeedItems(List<FeedItem> feedItems) {
+        this.feedItems = feedItems;
     }
 
     public FlightyChannel () {}
