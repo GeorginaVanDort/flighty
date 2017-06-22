@@ -3,6 +3,7 @@ package com.intuition.flighty.models;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Path;
@@ -55,9 +56,18 @@ public class FeedItem {
     public String getComments() {
         Document doc = Jsoup.parse(description);
         return doc.body().text();
+
     }
 
     public void setComments(String comments) {
         this.description = comments;
     }
+
+    public String getImageUrl() {
+        Document doc = Jsoup.parse(description);
+        org.jsoup.nodes.Element image = doc.select("img").first();
+        String url = image.absUrl("src");
+        return url;
+    }
+
 }

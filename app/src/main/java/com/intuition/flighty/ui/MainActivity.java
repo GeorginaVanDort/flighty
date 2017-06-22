@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     final ArrayList<FeedItem> mItems = response.body().getChannel().getFeedItems();
 
-
                     MainActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -73,12 +72,6 @@ public class MainActivity extends AppCompatActivity {
                             recyclerView.setAdapter(recyclerViewAdapter);
                         }
                     });
-
-
-//                    Document doc = Jsoup.parse(mItems);
-
-//                    String text = doc.body().text();
-//                    Log.v("OVER HERE", text);
                 }
             }
 

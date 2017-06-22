@@ -45,6 +45,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         @BindView(R.id.feedTitle) TextView mFeedTitle;
         @BindView(R.id.feedDescription) TextView mFeedDescription;
         @BindView(R.id.feedLink) TextView mFeedLink;
+        @BindView(R.id.imgUrl) TextView mImageUrl;
 
 
         public FeedViewHolder(View v) {
@@ -56,6 +57,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             mFeedDescription.setText(feedItem.getComments());
             mFeedLink.setText(feedItem.getLink());
             mFeedTitle.setText(feedItem.getTitle());
+            mImageUrl.setText(feedItem.getImageUrl());
         }
     }
 
