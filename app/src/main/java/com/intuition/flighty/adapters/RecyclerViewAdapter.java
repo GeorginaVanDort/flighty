@@ -53,8 +53,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         @BindView(R.id.feedDescription) TextView mFeedDescription;
         @BindView(R.id.feedLink) TextView mFeedLink;
         @BindView(R.id.feedImg) ImageView mFeedImg;
-         private static final int MAX_WIDTH = 800;
-         private static final int MAX_HEIGHT = 800;
+//         private static final int MAX_WIDTH = 800;
+//         private static final int MAX_HEIGHT = 800;
          Context mContext;
 
 
@@ -72,8 +72,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             Picasso.with(mContext)
                     .load(feedItem.getImageUrl())
-                    .resize(MAX_WIDTH, MAX_HEIGHT)
-                    .centerCrop()
+//                    .resize(MAX_WIDTH, MAX_HEIGHT)
+//                    .centerCrop()
                     .into(mFeedImg);
         }
 
