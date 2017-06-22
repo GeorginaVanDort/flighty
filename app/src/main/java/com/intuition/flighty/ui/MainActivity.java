@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call<FlightyFeed> call, Response<FlightyFeed> response) {
-                Log.v("RESPONSE", "HI");
+                Log.v("RESPONSE", "SUCCESS");
                 if(response.isSuccessful()){
                     final ArrayList<FeedItem> mItems = response.body().getChannel().getFeedItems();
 

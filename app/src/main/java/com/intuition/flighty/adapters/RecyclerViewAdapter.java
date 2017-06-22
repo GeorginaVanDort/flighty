@@ -2,7 +2,10 @@ package com.intuition.flighty.adapters;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,11 +41,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public FeedViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         mView = LayoutInflater.from(mContext).inflate(R.layout.recyclerview_item,parent,false);
         mViewHolder = new FeedViewHolder(mView);
+
+
         return mViewHolder;
     }
 
 
-     static class FeedViewHolder extends RecyclerView.ViewHolder {
+    public class FeedViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.feedTitle) TextView mFeedTitle;
         @BindView(R.id.feedDescription) TextView mFeedDescription;
@@ -57,6 +62,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             super(v);
             ButterKnife.bind(this, v);
             mContext = v.getContext();
+            mFeedLink.setOnClickListener(this);
         }
 
         public void bindViewHolder(FeedItem feedItem) {
@@ -70,7 +76,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     .centerCrop()
                     .into(mFeedImg);
         }
-    }
+
+        @Override
+        public void onClick(View v) {
+            if (v == mFeedLink) {
+                        Log.v("HEY", "YES");
+                        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mFeedLink.getText().toString()));
+                        mContext.startActivity(webIntent);
+                    }
+                }
+            }
 
     @Override
     public void onBindViewHolder(FeedViewHolder holder, int position) {
