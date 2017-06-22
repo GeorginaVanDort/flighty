@@ -1,14 +1,17 @@
 package com.intuition.flighty.adapters;
 
+import android.app.Application;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.intuition.flighty.R;
 import com.intuition.flighty.models.FeedItem;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -20,7 +23,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     Context mContext;
     FeedViewHolder mViewHolder;
     View mView;
-
 
     public RecyclerViewAdapter(ArrayList<FeedItem> items, Context context) {
         mItems = items;
@@ -46,18 +48,29 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         @BindView(R.id.feedDescription) TextView mFeedDescription;
         @BindView(R.id.feedLink) TextView mFeedLink;
         @BindView(R.id.imgUrl) TextView mImageUrl;
+        @BindView(R.id.feedImg) ImageView mFeedImg;
+         private static final int MAX_WIDTH = 800;
+         private static final int MAX_HEIGHT = 800;
+         Context mContext;
 
 
         public FeedViewHolder(View v) {
             super(v);
             ButterKnife.bind(this, v);
-
+            mContext = v.getContext();
         }
+
         public void bindViewHolder(FeedItem feedItem) {
             mFeedDescription.setText(feedItem.getComments());
             mFeedLink.setText(feedItem.getLink());
             mFeedTitle.setText(feedItem.getTitle());
             mImageUrl.setText(feedItem.getImageUrl());
+
+            Picasso.with(mContext)
+                    .load(feedItem.getImageUrl())
+                    .resize(MAX_WIDTH, MAX_HEIGHT)
+                    .centerCrop()
+                    .into(mFeedImg);
         }
     }
 
